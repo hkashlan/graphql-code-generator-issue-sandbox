@@ -1,0 +1,19 @@
+schema: schema.graphql
+documents: document.graphql
+generates:
+  types.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+  .:
+    preset: near-operation-file
+    presetConfig:
+      baseTypesPath: types.ts
+      extension: .gen.ts
+    plugins:
+      - typescript-operations
+      - typescript-apollo-angular
+    config:
+      debug: 1
+      documentMode: external
+      importDocumentNodeExternallyFrom: near-operation-file
